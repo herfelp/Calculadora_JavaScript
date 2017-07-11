@@ -173,3 +173,21 @@ teclapunto.addEventListener("click",function(){
     }
     }
 });
+
+var teclasigno = document.getElementById("sign");
+teclasigno.addEventListener("click",function(){
+  var disp = document.getElementById("display").innerHTML.replace(/ /g,"");
+  var disp_a = disp.replace("-","");
+  var disp_b = disp_a.replace(".","");
+  if (disp_b.length < 8){
+    if(document.getElementById("display").innerHTML!="0"){
+      if (document.getElementById("display").innerHTML.indexOf("-")=="-1"){
+         document.getElementById("display").innerHTML = "-" + document.getElementById("display").innerHTML;
+      }else{
+        document.getElementById("display").innerHTML = document.getElementById("display").innerHTML.replace("-","");
+      }
+
+    }
+
+    }
+});
