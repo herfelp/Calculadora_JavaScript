@@ -17,7 +17,8 @@
 
 function pant(){
 var display = document.getElementById("display").innerHTML;
-return display;
+var nume = display.replace(/ /g,"");
+return nume;
 };
 
 function numpant(e){
@@ -32,6 +33,26 @@ function lpan(){
   var l = disp_b.length;
   return l;
 };
+
+function result(e){
+   var n = e.toString();
+   var remp = n.replace(/1/g," 1")
+   console.log(remp);
+
+   return remp;
+};
+
+var tecla0 = document.getElementById("0");
+tecla0.addEventListener("click",function(){
+if (lpan() < 8){
+  if (pant()=="0"){
+     document.getElementById("display").innerHTML = document.getElementById("display").innerHTML.replace("0","0");
+  }
+  else{
+  document.getElementById("display").innerHTML = document.getElementById("display").innerHTML.concat("0");
+  }
+}
+});
 
 var tecla9 = document.getElementById("9");
 tecla9.addEventListener("click",function(){
@@ -178,11 +199,53 @@ teclasuma.addEventListener("click",function(){
     console.log(operacion);
 });
 
+var teclaresta = document.getElementById("menos");
+teclaresta.addEventListener("click",function(){
+     m = numpant(pant());
+     operacion = "menos";
+     document.getElementById("display").innerHTML = "";
+    console.log(m);
+    console.log(operacion);
+});
+
+var teclapor = document.getElementById("por");
+teclapor.addEventListener("click",function(){
+     m = numpant(pant());
+     operacion = "por";
+     document.getElementById("display").innerHTML = "";
+    console.log(m);
+    console.log(operacion);
+});
+
+var tecladividido = document.getElementById("dividido");
+tecladividido.addEventListener("click",function(){
+     m = numpant(pant());
+     operacion = "dividido";
+     document.getElementById("display").innerHTML = "";
+    console.log(m);
+    console.log(operacion);
+});
+
 var teclaigual = document.getElementById("igual");
 teclaigual.addEventListener("click",function(){
-
      n = numpant(pant());
-  
-    document.getElementById("display").innerHTML = m+n;
+     console.log(n);
+     switch (operacion) {
+    case "mas":
+        r = sum(m,n);
+        document.getElementById("display").innerHTML = result(r);
+        break;
+    case "menos":
+         r = res(m,n);
+        document.getElementById("display").innerHTML = result(r);
+        break;
+    case "por":
+         r = mult(m,n);
+        document.getElementById("display").innerHTML = result(r);
+        break;
+    case "dividido":
+        r = div(m,n);
+        document.getElementById("display").innerHTML = result(r);
+}
 
 });
