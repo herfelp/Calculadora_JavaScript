@@ -35,11 +35,25 @@ function lpan(){
 };
 
 function result(e){
-   var n = e.toString();
-   var remp = n.replace(/1/g," 1")
-   console.log(remp);
 
-   return remp;
+   var n = e.toString();
+   var remp = n.replace(/1/g," 1");
+
+     console.log("resultado = "+e+" cadena = "+remp);
+
+   var espacios = ((remp.match(/ /g) || []).length);
+   if (remp.indexOf(".")!="-1"){
+     var espacios = espacios + 1;
+   };
+   if (remp.indexOf("-")!="-1"){
+     var espacios = espacios + 1;
+   };
+
+  console.log(espacios);
+
+  var resu = remp.slice(0 , 8 + espacios);
+
+   return resu;
 };
 
 var tecla0 = document.getElementById("0");
@@ -195,8 +209,7 @@ teclasuma.addEventListener("click",function(){
      m = numpant(pant());
      operacion = "mas";
      document.getElementById("display").innerHTML = "";
-    console.log(m);
-    console.log(operacion);
+
 });
 
 var teclaresta = document.getElementById("menos");
@@ -204,8 +217,7 @@ teclaresta.addEventListener("click",function(){
      m = numpant(pant());
      operacion = "menos";
      document.getElementById("display").innerHTML = "";
-    console.log(m);
-    console.log(operacion);
+
 });
 
 var teclapor = document.getElementById("por");
@@ -213,8 +225,7 @@ teclapor.addEventListener("click",function(){
      m = numpant(pant());
      operacion = "por";
      document.getElementById("display").innerHTML = "";
-    console.log(m);
-    console.log(operacion);
+
 });
 
 var tecladividido = document.getElementById("dividido");
@@ -222,30 +233,33 @@ tecladividido.addEventListener("click",function(){
      m = numpant(pant());
      operacion = "dividido";
      document.getElementById("display").innerHTML = "";
-    console.log(m);
-    console.log(operacion);
+
 });
 
 var teclaigual = document.getElementById("igual");
 teclaigual.addEventListener("click",function(){
-     n = numpant(pant());
-     console.log(n);
-     switch (operacion) {
-    case "mas":
-        r = sum(m,n);
-        document.getElementById("display").innerHTML = result(r);
-        break;
-    case "menos":
-         r = res(m,n);
-        document.getElementById("display").innerHTML = result(r);
-        break;
-    case "por":
-         r = mult(m,n);
-        document.getElementById("display").innerHTML = result(r);
-        break;
-    case "dividido":
-        r = div(m,n);
-        document.getElementById("display").innerHTML = result(r);
-}
+    resultadoigual();
 
 });
+
+function resultadoigual(){
+  n = numpant(pant());
+
+  switch (operacion) {
+ case "mas":
+     r = sum(m,n);
+     document.getElementById("display").innerHTML = result(r);
+     break;
+ case "menos":
+      r = res(m,n);
+     document.getElementById("display").innerHTML = result(r);
+     break;
+ case "por":
+      r = mult(m,n);
+     document.getElementById("display").innerHTML = result(r);
+     break;
+ case "dividido":
+     r = div(m,n);
+     document.getElementById("display").innerHTML = result(r);
+}
+};
