@@ -1,6 +1,7 @@
 
+calculadora();
 
-
+function calculadora(){
 
   function sum( param1, param2 ){
     return param1 + param2;
@@ -14,6 +15,27 @@
   function div( param1, param2){
     return param1 / param2;
   };
+
+
+
+function presiona(teclax){
+  teclax.onmouseup = function(){
+    if (teclax.classList.contains("press")){
+      teclax.classList.remove("press");
+    };
+  };
+  teclax.onmousedown = function(){
+    if (teclax.classList.contains("press")){
+      console.log("hola")
+    }else{
+      teclax.classList.add("press");
+    };
+  };
+};
+
+
+
+
 
 function pant(){
 var display = document.getElementById("display").innerHTML;
@@ -35,12 +57,8 @@ function lpan(){
 };
 
 function result(e){
-
    var n = e.toString();
    var remp = n.replace(/1/g," 1");
-
-     console.log("resultado = "+e+" cadena = "+remp);
-
    var espacios = ((remp.match(/ /g) || []).length);
    if (remp.indexOf(".")!="-1"){
      var espacios = espacios + 1;
@@ -48,14 +66,9 @@ function result(e){
    if (remp.indexOf("-")!="-1"){
      var espacios = espacios + 1;
    };
-
-  console.log(espacios);
-
   var resu = remp.slice(0 , 8 + espacios);
-
    return resu;
 };
-
 var tecla0 = document.getElementById("0");
 tecla0.addEventListener("click",function(){
 if (lpan() < 8){
@@ -67,8 +80,8 @@ if (lpan() < 8){
   }
 }
 });
-
 var tecla9 = document.getElementById("9");
+presiona(tecla9);
 tecla9.addEventListener("click",function(){
 if (lpan() < 8){
   if (pant()=="0"){
@@ -81,6 +94,7 @@ if (lpan() < 8){
 });
 
 var tecla8 = document.getElementById("8");
+presiona(tecla8);
 tecla8.addEventListener("click",function(){
 if (lpan() < 8){
   if (pant()=="0"){
@@ -93,6 +107,7 @@ if (lpan() < 8){
 });
 
 var tecla7 = document.getElementById("7");
+presiona(tecla7);
 tecla7.addEventListener("click",function(){
 if (lpan() < 8){
   if (pant()=="0"){
@@ -105,6 +120,7 @@ if (lpan() < 8){
 });
 
 var tecla6 = document.getElementById("6");
+presiona(tecla6);
 tecla6.addEventListener("click",function(){
 if (lpan() < 8){
   if (pant()=="0"){
@@ -117,6 +133,7 @@ if (lpan() < 8){
 });
 
 var tecla5 = document.getElementById("5");
+presiona(tecla5);
 tecla5.addEventListener("click",function(){
 if (lpan() < 8){
   if (pant()=="0"){
@@ -129,6 +146,7 @@ if (lpan() < 8){
 });
 
 var tecla4 = document.getElementById("4");
+presiona(tecla4);
 tecla4.addEventListener("click",function(){
 if (lpan() < 8){
   if (pant()=="0"){
@@ -141,6 +159,7 @@ if (lpan() < 8){
 });
 
 var tecla3 = document.getElementById("3");
+presiona(tecla3);
 tecla3.addEventListener("click",function(){
 if (lpan() < 8){
   if (pant()=="0"){
@@ -153,6 +172,7 @@ if (lpan() < 8){
 });
 
 var tecla2 = document.getElementById("2");
+presiona(tecla2);
 tecla2.addEventListener("click",function(){
 if (lpan() < 8){
   if (pant()=="0"){
@@ -165,6 +185,7 @@ if (lpan() < 8){
 });
 
 var tecla1 = document.getElementById("1");
+presiona(tecla1);
 tecla1.addEventListener("click",function(){
 if (lpan() < 8){
   if (pant()=="0"){
@@ -177,12 +198,14 @@ if (lpan() < 8){
 });
 
 var teclaon = document.getElementById("on");
+presiona(teclaon);
 teclaon.addEventListener("click",function(){
   document.getElementById("display").innerHTML = "0";
-  console.log("on");
+
 });
 
 var teclapunto = document.getElementById("punto");
+presiona(teclapunto);
 teclapunto.addEventListener("click",function(){
   if (lpan() < 8){
     if (document.getElementById("display").innerHTML.indexOf(".")=="-1"){
@@ -192,6 +215,7 @@ teclapunto.addEventListener("click",function(){
 });
 
 var teclasigno = document.getElementById("sign");
+presiona(teclasigno);
 teclasigno.addEventListener("click",function(){
   if (lpan() <= 8){
     if(pant()!="0"){
@@ -205,6 +229,7 @@ teclasigno.addEventListener("click",function(){
 });
 
 var teclasuma = document.getElementById("mas");
+presiona(teclasuma);
 teclasuma.addEventListener("click",function(){
      m = numpant(pant());
      operacion = "mas";
@@ -213,6 +238,7 @@ teclasuma.addEventListener("click",function(){
 });
 
 var teclaresta = document.getElementById("menos");
+presiona(teclaresta);
 teclaresta.addEventListener("click",function(){
      m = numpant(pant());
      operacion = "menos";
@@ -221,6 +247,7 @@ teclaresta.addEventListener("click",function(){
 });
 
 var teclapor = document.getElementById("por");
+presiona(teclapor);
 teclapor.addEventListener("click",function(){
      m = numpant(pant());
      operacion = "por";
@@ -229,6 +256,7 @@ teclapor.addEventListener("click",function(){
 });
 
 var tecladividido = document.getElementById("dividido");
+presiona(tecladividido);
 tecladividido.addEventListener("click",function(){
      m = numpant(pant());
      operacion = "dividido";
@@ -237,6 +265,7 @@ tecladividido.addEventListener("click",function(){
 });
 
 var teclaigual = document.getElementById("igual");
+presiona(teclaigual);
 teclaigual.addEventListener("click",function(){
     resultadoigual();
 
@@ -262,4 +291,9 @@ function resultadoigual(){
      r = div(m,n);
      document.getElementById("display").innerHTML = result(r);
 }
+
+};
+
+
+
 };
